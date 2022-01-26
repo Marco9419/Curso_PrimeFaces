@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Pie Chart</title>
+    </h:head>
+    <h:body>
+        
+            <center>
+        <h:form>
+                
+            <p:panel header="Pie Chart" style ="width: 450px; box-shadow: 0px 10px 10px 10px graytext" >
+
+                <h:panelGrid columns="2" cellpadding="10">
+
+                    <p:outputLabel for="mercedes" value="Value of Mercedes: " />
+                    <p:inputText id="mercedes" type="number" value="#{pieChart.mercedes}"
+                                 style ="width: 150px; " />
+
+                    <p:outputLabel for="bmw" value="Value of BMW: " />
+                    <p:inputText id="bmw" type="number" value="#{pieChart.bmw}"
+                                 style ="width: 150px; " />
+
+                    <p:outputLabel for="volvo" value="Value of Volvo: " />
+                    <p:inputText id="volvo" type="number" value="#{pieChart.volvo}"
+                                 style ="width: 150px; " />
+
+                <p:commandButton value="Enviar" actionListener="#{pieChart.drawingPie()}"  update ="drawing" />
+                
+                </h:panelGrid>
+                <p:separator/>
+
+                <p:chart type="pie" model="#{pieChart.pieModel}" style="width: 400px; height: 300px;" id="drawing" />
+
+            </p:panel>
+
+        </h:form>
+            </center>
+    </h:body>
+</html>
+

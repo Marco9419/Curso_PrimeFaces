@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Panel prueba</title>
+    </h:head>
+    <h:body>
+
+        <p:panel header="Information" style="margin-bottom: 10px; width: 60%;" class="panel1">
+
+            <h:form id="register">
+                <h:panelGrid columns="4" cellpadding="5">
+                    <p:outputLabel for="name" value="First Name: "/>
+                    <p:inputText id="name" value="#{information.name}">
+                        <p:ajax event="keyup" update="outName"/>
+                    </p:inputText>
+
+                    <p:outputLabel for="lastName" value="Last Name: "/>
+                    <p:inputText id="lastName" value="#{information.lastName}">
+                        <p:ajax event="keyup" update="outLastName"/>
+                    </p:inputText>
+
+                    <p:outputLabel for="email" value="Email: "/>
+                    <p:inputText id="email" value="#{information.email}">
+                        <p:ajax event="keyup" update="outEmail"/>
+                    </p:inputText>
+
+                    <p:outputLabel for="phone" value="Phone"/>
+                    <p:inputMask id="phone" value="#{information.phone}" mask="(99)-99-99-99-99">
+                        <p:ajax event="keyup" update="outPhone"/>
+                    </p:inputMask>
+
+                </h:panelGrid>
+
+                <p:separator/>
+
+                <h:outputText value="La informacion del usuario es: " />
+
+                <h:panelGrid columns="4" cellpadding="5">
+                    <h:outputText id="outName" value="#{information.name}"/>
+                    <h:outputText id="outLastName" value="#{information.lastName}"/>
+                    <h:outputText id="outEmail" value="#{information.email}"/>
+                    <h:outputText id="outPhone" value="#{information.phone}"/>
+
+                </h:panelGrid>
+
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:commandButton value="Reset" actionListener="#{information.reset}" />
+                </h:panelGrid>
+
+            </h:form>
+        </p:panel>
+
+
+    </h:body>
+</html>
+

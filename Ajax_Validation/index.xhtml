@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Ajax Validation</title>
+    </h:head>
+    
+    <style>
+        panel{
+            box-shadow: 10px 10px 10px 10px grey;
+            
+        }
+    </style>
+    
+    <h:body>
+        
+        <h:form>
+            
+            <p:panel id="panel-id" header="Add a User">
+                
+               <p:messages id="msgs" />
+               <h:panelGrid columns="3" cellpadding="5">
+                   
+                   <p:outputLabel for="firstname" value="First Name" />
+                   <p:inputText id="firstname" value="#{ajaxValidation.firstname}" required="true" label="First Name">
+                       <f:validateLength minimum="2" />
+                   </p:inputText>
+                   <p:message for="firstname" display="icon" />
+                   
+                   <p:outputLabel for="lastname" value="Last Name" />
+                   
+                   <p:inputText id="lastname" value="#{ajaxValidation.lastname}" label="Last Name" required="true">
+                       <f:validateLength minimum="2" />
+                       <p:ajax update="msgLastname" event="keyup" />
+                   </p:inputText>
+                   
+                   <p:message for="lastname" id="msgLastname" display="icon" />
+                   
+               <p:commandButton value="Save" update="panel-id" actionListener="#{ajaxValidation.save}" icon="ui-icon-check" />
+               
+               <p:commandButton value="Cancel" update="panel-id" actionListener="#{ajaxValidation.cancel}" />
+               </h:panelGrid>
+               
+            </p:panel>
+            
+        </h:form>
+        
+    </h:body>
+</html>
+
